@@ -57,7 +57,7 @@ git crypt status -e
 **导出密钥**
 
 ```bash
-git-crypt export-key /path/to/key
+git crypt export-key /path/to/key
 ```
 
 导出了密钥以后，就可以分发给有需要的团队内部人员。
@@ -67,7 +67,7 @@ git-crypt export-key /path/to/key
 **解密**
 
 ```bash
-git-crypt unlock /path/to/git-crypt-key
+git crypt unlock /path/to/git-crypt-key
 ```
 
 git-crypt 也支持 gpg 的方式管理密钥，具体使用方式可以查看帮助文档`git help crypt`。
