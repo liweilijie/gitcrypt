@@ -53,8 +53,21 @@ git crypt status -e
 
 解密需要有对应的密钥，这需要我们先提前在安全的地方保存好密钥。可以通过如下的命令导出密钥：
 
+
+**导出密钥**
+
 ```bash
 git-crypt export-key /path/to/key
+```
+
+导出了密钥以后，就可以分发给有需要的团队内部人员。
+
+当团队其他成员获取了代码以后，需要修改配置文件，需要先解密，解密动作只需要做一次，往后就不需要再进行解密了。
+
+**解密**
+
+```bash
+git-crypt unlock /path/to/git-crypt-key
 ```
 
 git-crypt 也支持 gpg 的方式管理密钥，具体使用方式可以查看帮助文档`git help crypt`。
@@ -87,4 +100,7 @@ cp /Users/liwei/.config/gitcrypt/default .git/git-crypt/keys/default
 ```
 
 ## 总结
-git-crypt 借助 git 的 attributes 属性来实现对特定文件的自动加解密。目前在去除对文件的加密时会显的有些繁琐，后面可以调研下 gitattribute 的工作机制，看看有没有更简单的方法。
+
+**git-crypt** 借助 **git** 的`attributes`属性来实现对特定文件的自动加解密。目前在去除对文件的加密时会显的有些繁琐，后面可以调研下 gitattribute 的工作机制，看看有没有更简单的方法。
+
+利用该方式进行配置文件管理可以保证安全性，只有团队内相关人员才能看到配置文件明文内容，解密只需要第一次进行，之后就没什么改变，直接改配置文件，git 提交会自动加密。
